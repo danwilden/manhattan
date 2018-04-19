@@ -17,10 +17,13 @@ from django.contrib import admin
 from django.conf.urls import url
 from django.urls import path
 from django.views import generic
+from manhattan import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^view2/',generic.TemplateView.as_view(template_name='view2.html')),
   url(r'^$',
       generic.TemplateView.as_view(template_name='view1.html')),
+      path('api/business/', views.ListBusiness.as_view()),
+    path('api/business/<int:pk>/', views.DetailBusiness.as_view())
 ]
